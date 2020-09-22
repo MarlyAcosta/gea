@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CategoryCreate;
-use App\Repositories\Category\CategoryRepository;
+use App\Factories\FactoryRepo;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    protected $cat_repo;
-    public function __construct(CategoryRepository $CatRepo)
+    protected $factory_repo;
+    public function __construct()
     {
-        $this->cat_repo = $CatRepo;
+        $this->factory_repo = FactoryRepo::GetInstance();
     }
+    /**
+     * 
+     */
     public function index(Request $request){
-        $Categories = $this->cat_repo->getAll();
+        $Categories = $this->factory_repo::GetRepoInstance('CategoryRepository')->getAll();
         return view('index')->with(compact('Categories'));
     }
 }
