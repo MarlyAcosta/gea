@@ -2,6 +2,11 @@
 namespace App\Repositories;
 
 abstract class BaseRepository{
+    private static $instance;
+    private function __construct(){
+
+    }
+
     //Abstract Operations
     abstract public function getModel();
 
