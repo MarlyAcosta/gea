@@ -15,3 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'CategoryController@index')->name('index');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
