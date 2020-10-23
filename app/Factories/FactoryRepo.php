@@ -6,7 +6,8 @@ use Exception;
 
 class FactoryRepo{
     private static $repos = [
-        'CategoryRepository' => 'App\Repositories\Category\CategoryRepository'
+        'CategoryRepository' => 'App\Repositories\Category\CategoryRepository',
+        'UserAuthRepository' => 'App\Repositories\User\UserAuthRepository'
     ];
     private static $instance;
     private function __construct(){
