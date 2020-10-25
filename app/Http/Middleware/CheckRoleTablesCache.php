@@ -20,13 +20,13 @@ class CheckRoleTablesCache
         $roles = cache('roles');
         if($roles == null){
             $roles_db = DB::table('roles')->get();
-            Cache::forever('roles', $roles_db);
+            Cache::forever('roles', json_encode($roles_db));
             $roles = cache('roles');
         }
         $roles_usuario = cache('usuario_roles');
         if($roles_usuario == null){
             $roles_usuario_db = DB::table('usuario_roles')->get();
-            Cache::forever('usuario_roles', $roles_usuario_db);
+            Cache::forever('usuario_roles', json_encode($roles_usuario_db));
             $roles_usuario = cache('usuario_roles');
         }
         return $next($request);

@@ -16,4 +16,7 @@ class MainController extends Controller
         $this->factory_repo->GetRepoInstance('UserAuthRepository')->setSessionUserData();
         return $request->session()->get('usuario_roles');
     }
+    public function second(Request $request){
+        return $request;
+    }
 }

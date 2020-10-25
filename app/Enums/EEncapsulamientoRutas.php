@@ -7,10 +7,18 @@ class EEncapsulamientoRutas extends AEnum{
     const PRIVADA = 'N_3';
     static $items = [];
 
-    public function setItems()
+    private static function setItems()
     {
-        $items[self::PUBLICA] = new EEncapsulamientoRutas(1, __('enums.publica'));
-        $items[self::PROTEGIDA] = new EEncapsulamientoRutas(2, __('enums.protegida'));
-        $items[self::PRIVADA] = new EEncapsulamientoRutas(3, __('enums.privada'));
+        self::$items[self::PUBLICA] = new EEncapsulamientoRutas(1, __('enums.publica'));
+        self::$items[self::PROTEGIDA] = new EEncapsulamientoRutas(2, __('enums.protegida'));
+        self::$items[self::PRIVADA] = new EEncapsulamientoRutas(3, __('enums.privada'));
+    }
+    public static function getIndex($index){
+        $items = [];
+        if(self::$items == null){
+            self::setItems();
+        }
+        $items = self::$items;
+        return $items[$index];
     }
 }

@@ -18,4 +18,7 @@ Route::get('/', 'CategoryController@index')->name('index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('otra_ruta', 'MainController@index')->name('main.index');
+Route::get('otra_otra_ruta', 'MainController@second')->name('second.index')->middleware('custom_auth');
+

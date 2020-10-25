@@ -21,7 +21,9 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        //Verifica si existe una instancia de las tablas de los roles y permisos en la cache del servidor
         \App\Http\Middleware\CheckRoleTablesCache::class,
+        \App\Http\Middleware\CheckRoutesTableCache::class,
     ];
 
     /**
@@ -44,6 +46,7 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+        'custom_auth' => [\App\Http\Middleware\CheckRolePermission::class],
     ];
 
     /**
