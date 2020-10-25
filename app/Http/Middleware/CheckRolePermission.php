@@ -49,6 +49,7 @@ class CheckRolePermission
                 $bandera = false;
                 $ruta_accede_a = null;
                 foreach($rutas_asequibles as $arr){
+                    // [ {r1, r2}, {r4,r5}, {r33}]
                     $ruta_accede_a = $arr->where('id_ruta', $ruta->id)->first();
                     if($ruta_accede_a != null){
                         if($ruta_accede_a->tipo_permiso != EPermisosRutas::getIndex(EPermisosRutas::NINGUNO)->getId()){
@@ -58,6 +59,7 @@ class CheckRolePermission
                     }
                 }
                 if($bandera != true){
+                    //Preguntar por el rol antes de seguir navegando
                     return redirect()->route('login');
                 }
 

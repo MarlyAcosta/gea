@@ -4,6 +4,7 @@ namespace App\Repositories\User;
 
 use App\Models\Category;
 use App\Repositories\BaseRepository;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -21,7 +22,7 @@ class UserAuthRepository extends BaseRepository{
     }
     public function getModel()
     {
-        return new Category();
+        return new User();
     }
     public function setSessionUserData(){
         $this->setRolesToUser();
