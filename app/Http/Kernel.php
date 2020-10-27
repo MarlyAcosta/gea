@@ -22,8 +22,10 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         //Verifica si existe una instancia de las tablas de los roles y permisos en la cache del servidor
+        /* Actualmente, reemplazado por el comando gea:initialize
         \App\Http\Middleware\CheckRoleTablesCache::class,
         \App\Http\Middleware\CheckRoutesTableCache::class,
+        */
     ];
 
     /**

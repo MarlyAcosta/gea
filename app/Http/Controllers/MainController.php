@@ -19,4 +19,7 @@ class MainController extends Controller
     public function second(Request $request){
         return $request;
     }
+    public function vista(){
+        return view();
+    }
 }

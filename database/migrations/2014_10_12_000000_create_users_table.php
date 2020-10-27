@@ -14,23 +14,25 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
-        });
-        DB::table('users')
-        ->insert([
-            'name' => 'Juan Robles',
-            'email' => 'jrobles4@udi.edu.co',
-            'password' => bcrypt('KBztBuPbuH7Vu@w'),
-            'created_at' => '2020-10-23 00:09:20',
-            'updated_at' => '2020-10-23 00:09:20'
-        ]);
+        if(!Schema::hasTable('users')){
+            Schema::create('users', function (Blueprint $table) {
+                $table->id();
+                $table->string('name');
+                $table->string('email')->unique();
+                $table->timestamp('email_verified_at')->nullable();
+                $table->string('password');
+                $table->rememberToken();
+                $table->timestamps();
+            });
+            DB::table('users')
+            ->insert([
+                'name' => 'Juan Robles',
+                'email' => 'jrobles4@udi.edu.co',
+                'password' => bcrypt('KBztBuPbuH7Vu@w'),
+                'created_at' => '2020-10-23 00:09:20',
+                'updated_at' => '2020-10-23 00:09:20'
+            ]);
+        }
     }
 
     /**
@@ -40,6 +42,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+
     }
 }

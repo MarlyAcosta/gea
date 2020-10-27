@@ -14,23 +14,25 @@ class CreateRoles extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre');
-            $table->longText('descripcion')->nullable();
-        });
-        DB::table('roles')
-        ->insert([
-            [
-                'nombre' => 'Administrador'
-            ],
-            [
-                'nombre' => 'Invitado'
-            ],
-            [
-                'nombre' => 'Analista'
-            ]
-        ]);
+        if(!Schema::hasTable('roles')){
+            Schema::create('roles', function (Blueprint $table) {
+                $table->id();
+                $table->string('nombre');
+                $table->longText('descripcion')->nullable();
+            });
+            DB::table('roles')
+            ->insert([
+                [
+                    'nombre' => 'Administrador'
+                ],
+                [
+                    'nombre' => 'Invitado'
+                ],
+                [
+                    'nombre' => 'Analista'
+                ]
+            ]);
+        }
     }
 
     /**
@@ -40,6 +42,6 @@ class CreateRoles extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles');
+
     }
 }
