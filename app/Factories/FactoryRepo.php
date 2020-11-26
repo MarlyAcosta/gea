@@ -8,7 +8,8 @@ class FactoryRepo{
     private static $repos = [
         'CategoryRepository' => 'App\Repositories\Category\CategoryRepository',
         'UserAuthRepository' => 'App\Repositories\User\UserAuthRepository',
-        'RolesRepository' => 'App\Repositories\Roles\RolesRepository'
+        'RolesRepository' => 'App\Repositories\Roles\RolesRepository',
+        'RoutesRepository' => 'App\Repositories\Routes\RoutesRepository',
     ];
     private static $instance;
     private function __construct(){

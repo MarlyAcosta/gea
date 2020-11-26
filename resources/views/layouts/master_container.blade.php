@@ -2,6 +2,6 @@
 
 @section('struct')
     <div class="container">
-        @yield('content')
+        @yield('contents')
     </div>
 @endsection
