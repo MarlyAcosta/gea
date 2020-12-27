@@ -8,8 +8,9 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use stdClass;
 
-class UserAuthRepository extends BaseRepository{
+class UserRepository extends BaseRepository{
     private static $instance;
     private function __construct(){
 
@@ -24,23 +25,25 @@ class UserAuthRepository extends BaseRepository{
     {
         return new User();
     }
-    public function setSessionUserData(){
-        $this->setRolesToUser();
-    }
-    private function setRolesToUser(){
-        $user_id = Auth::id();
+
+    /**
+     * @return array contiene por row un usuario y los roles del mismo
+     */
+    public function getAllUsersWithRoles(){
+
         $roles = DB::table('users')
-        ->join('usuario_roles', 'usuario_roles.id_user', 'users.id')
-        ->join('roles', 'roles.id', 'usuario_roles.id_rol')
-        ->where('usuario_roles.id_user', $user_id)
-        ->select('roles.id', 'roles.descripcion', 'roles.nombre')
-        ->get();
-        Session::put('usuario_roles', json_encode($roles));
-    }
-    public function getAllWithRoles(){
-        return DB::table('users')
         ->join('usuario_roles', 'usuario_roles.id_user', '=', 'users.id')
         ->join('roles', 'roles.id', '=', 'usuario_roles.id_roles')
-        ->select('roles.*');
+        ->select('roles.*', 'usuario_roles.id_user as id_user')
+        ->get();
+        $usuarios = DB::table('users')->get();
+        $retorno = [];
+        foreach($usuarios as $u){
+            $row = new stdClass;
+            $row->usuario = $u;
+            $row->roles = $roles->where('id_user', $u->id);
+            array_push($retorno, $row);
+        }
+        return $retorno;
     }
 }

@@ -29,3 +29,6 @@ Route::group(['middleware' => ['custom_auth']], function(){
 Route::get('/roles', "RolesController@index")->name('roles.index');
 Route::get('/rutas', "RoutesController@index")->name('rutas.index');
 Route::post('/rutas/encapsulamiento/cambiar', "RoutesController@cambiarEncapsulamientoRuta")->name('rutas.cambiar_encapsulamiento_ruta');
+
+
+Route::get('/roles_usuario', 'PermissionsController@index')->name('roles_usuario.index');

@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
                 $table->string('password');
                 $table->rememberToken();
                 $table->timestamps();
+                $table->boolean('is_active')->default(true);
             });
             DB::table('users')
             ->insert([
@@ -30,7 +31,8 @@ class CreateUsersTable extends Migration
                 'email' => 'jrobles4@udi.edu.co',
                 'password' => bcrypt('KBztBuPbuH7Vu@w'),
                 'created_at' => '2020-10-23 00:09:20',
-                'updated_at' => '2020-10-23 00:09:20'
+                'updated_at' => '2020-10-23 00:09:20',
+                'is_active' => true,
             ]);
         }
     }

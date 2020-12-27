@@ -13,7 +13,7 @@ class CategoryController extends Controller
         $this->factory_repo = FactoryRepo::GetInstance();
     }
     /**
-     * 
+     *
      */
     public function index(Request $request){
         $Categories = $this->factory_repo::GetRepoInstance('CategoryRepository')->getAll();
