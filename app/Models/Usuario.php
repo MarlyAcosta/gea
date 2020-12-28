@@ -10,4 +10,6 @@ class Usuario extends Model
 {
     use Authenticatable;
     use Notifiable;
+
+    protected $fillable = ['id', 'name', 'email', 'password', 'created_at', 'updated_at'];
 }

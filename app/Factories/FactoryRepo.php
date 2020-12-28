@@ -32,4 +32,17 @@ class FactoryRepo{
             return false;
         }
     }
+    //obtiene la instancia de todos los repositorios
+    public static function GetAllRepos(){
+        try{
+            $arr = [];
+            foreach(static::$repos as $key => $value){
+                $RepoInstance = $value::GetInstance();
+                array_push($arr, $RepoInstance);
+            }
+            return $arr;
+        }catch(Exception $e){
+            return false;
+        }
+    }
 }
