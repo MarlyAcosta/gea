@@ -24,12 +24,11 @@ class CreateProyecto extends Migration
 
             $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_metodologia');
-            $table->unsignedBigInteger('id_estado');
+            $table->smallInteger('id_estado');
             $table->timestamps();
 
             $table->foreign('id_user')->references('id')->on('users');
             $table->foreign('id_metodologia')->references('id')->on('metodologia');
-            $table->smallInteger('id_estado');
 
         });
     }

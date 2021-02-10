@@ -20,7 +20,7 @@ class CreateRoles extends Migration
                 $table->id();
                 $table->string('nombre');
                 $table->longText('descripcion')->nullable();
-                $table->tinyInteger('activo')->default(EActivo::getIndex(EActivo::ACTIVO));
+                $table->tinyInteger('activo')->default(EActivo::getIndex(EActivo::ACTIVO)->getId());
             });
             DB::table('roles')
             ->insert([
